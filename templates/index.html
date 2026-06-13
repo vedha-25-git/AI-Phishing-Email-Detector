@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI-Powered Phishing Email Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>🔐 AI-Powered Phishing Email Detector</h1>
+
+        <p>
+            Detect phishing emails using Artificial Intelligence,
+            keyword analysis and suspicious URL detection.
+        </p>
+
+        <form method="POST">
+
+            <textarea
+                name="email"
+                placeholder="Paste suspicious email here..."
+                required></textarea>
+
+            <br><br>
+
+            <button type="submit">
+                Analyze Email
+            </button>
+
+        </form>
+
+        {% if result %}
+        <div class="result-box">
+
+            <h2>{{ result }}</h2>
+
+            <hr>
+
+            <h3>📊 Security Statistics</h3>
+
+            <p><strong>Risk Score:</strong> {{ risk }}%</p>
+
+            <p><strong>AI Confidence:</strong> {{ confidence }}%</p>
+
+            <p><strong>Suspicious Keywords Found:</strong> {{ keyword_count }}</p>
+
+            <p><strong>URLs Detected:</strong> {{ url_count }}</p>
+
+            <hr>
+
+            <h3>🔍 Why Was This Flagged?</h3>
+
+            <ul>
+                {% for reason in reasons %}
+                    <li>{{ reason }}</li>
+                {% endfor %}
+            </ul>
+
+        </div>
+        {% endif %}
+
+    </div>
+
+    <footer>
+        <p>
+            Developed by Vedha | AI-Powered Phishing Email Detector
+        </p>
+    </footer>
+
+</body>
+</html>
